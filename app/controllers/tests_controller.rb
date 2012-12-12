@@ -13,7 +13,8 @@ class TestsController < ApplicationController
       cloze.questions.each do |questions|
         if questions["key"] != params[:result]["cloze_"+cloze.id+"_"+cloze.questions.index(questions).to_s]
           @error_count = @error_count+1 
-          @wrong_number << cloze.questions.index(questions).to_s
+          @wrong_number << {"index" => cloze.questions.index(questions).to_s, "choc" => params[:result]["cloze_"+cloze.id+"_"+cloze.questions.index(questions).to_s]}
+
         end
       end
 
