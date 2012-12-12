@@ -1,9 +1,9 @@
 class TestsController < ApplicationController
   def index
-    @cloze = Cloze.first
+    @clozes = Cloze.all
   end
   def create
-   @cloze = Cloze.find(params[:result][:item]) 
+   @clozes = Cloze.find(eval(params[:result][:item])) 
     
   end
 end

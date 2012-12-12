@@ -1,16 +1,20 @@
-<%= sanitize(@cloze.text) %>
 <%= form_for :result, :url => tests_path do |f| %>
-  <% @cloze.questions.each do |questions| %>
-    <span><%= (@cloze.questions.index(questions)+1).to_s+"." %></span>
-    <ol type="A">
-      <% questions['choices'].each do |choice| %>
-        <li>
-        <%= f.radio_button @cloze.questions.index(questions), choice %>
-        <%= f.label @cloze.questions.index(questions).to_s+'_'+choice, choice %>
-        </li>
-      <% end %>
-    </ol>
+  <% @cloze_ids = [] %>
+  <% @clozes.each do |cloze| %>
+    <% @cloze_ids << cloze.id %>
+    <%= sanitize(cloze.text) %>
+    <% cloze.questions.each do |questions| %>
+      <span><%= (cloze.questions.index(questions)+1).to_s+"." %></span>
+      <ol type="A">
+        <% questions['choices'].each do |choice| %>
+          <li>
+          <%= f.radio_button "cloze_"+cloze.id+"_"+cloze.questions.index(questions).to_s, choice %>
+          <%= f.label cloze.questions.index(questions).to_s+'_'+choice, choice %>
+          </li>
+        <% end %>
+      </ol>
+    <% end %>
   <% end %>
-  <%= f.text_field :item, :value => @cloze.id, :style => "display:none"  %>
+  <%= f.text_field :item, :value => @cloze_ids, :style => "display:none"  %>
   <%= f.submit %>
 <% end %>
