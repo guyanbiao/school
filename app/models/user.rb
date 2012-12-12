@@ -27,7 +27,7 @@ class User
   field :current_sign_in_ip, :type => String
   field :last_sign_in_ip,    :type => String
   field :level
-
+  has_many :records
 
   attr_accessible :level
   ## Confirmable
