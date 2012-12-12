@@ -1,0 +1,2 @@
+module ClozesHelper
+end

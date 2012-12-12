@@ -1,0 +1,13 @@
+<%= sanitize(@cloze.text) %>
+<% @cloze.questions.each do |questions| %>
+  <span class="question_number"><%= (@cloze.questions.index(questions)+1).to_s+"." %></span>
+  <% questions['choices'].each do |choice| %>
+    <span class="question_list"><%= choice %></span>
+  <% end %>
+  <% if questions['tips'].length > 0  %>
+    <br/><b>Tip:</b><span class="question_tips"><%= questions['tips'] %></span>
+  <% end %>
+  <br/>
+  <span><b>The right answer:</b></span><span><%= questions['key'] %></span><br/>
+  <span><b>Your answer:</b></span><span><%= params[:result][@cloze.questions.index(questions).to_s] %></span><br/>
+<% end %>

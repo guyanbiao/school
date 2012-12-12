@@ -1,7 +1,9 @@
 <%= render "shared/header" %>
 <% if user_signed_in? %>
   <%= form_tag(edit_user_path(current_user), :method => :get ) do %>
-  <%= select_tag :level, options_for_select( 20.times.map {|r| [r+1,r+1]}) %>
-  <%= submit_tag %>
+    <%= select_tag :level, options_for_select( 20.times.map {|r| [r+1,r+1]}) %>
+    <%= submit_tag %>
+  <% end %>
+  <%= link_to 'Begin to test', tests_path %>
 <% end %>
-<% end %>
+
