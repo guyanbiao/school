@@ -4,7 +4,12 @@ gem 'rails', '3.2.9'
 gem 'mongoid'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
+gem "carrierwave-mongoid", :git => "git://github.com/jnicklas/carrierwave-mongoid.git", :branch => "mongoid-3.0"
 
+gem 'nokogiri'
+gem 'mongo'
+gem 'bson'
+gem 'bson_ext'
 
 
 # Gems used only for assets and not required
