@@ -1,4 +1,7 @@
 class ImportsController < ApplicationController
+  def index
+    @import = Import.new
+  end
   def create
     @import = Import.new
     @data = params[:import][:file]

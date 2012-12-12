@@ -1,6 +1,7 @@
 <%= render "shared/header" %>
-<h1>Hoello world!</h1>
-<%= form_for(@import, :html => {:multipart => true}) do |f| %>
-  <%= f.file_field :file %>
-  <%= f.submit %>
+<% if user_signed_in? %>
+  <%= form_tag(edit_user_path(current_user), :method => :get ) do %>
+  <%= select_tag :level, options_for_select( 20.times.map {|r| [r+1,r+1]}) %>
+  <%= submit_tag %>
+<% end %>
 <% end %>
