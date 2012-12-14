@@ -4,5 +4,4 @@ class Record
   field :type
   field :items
   belongs_to :user
-  has_and_belongs_to_many :cloze_children
 end

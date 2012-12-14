@@ -1,8 +1,8 @@
-class Record
+class Point
   include Mongoid::Document
-  include Mongoid::Timestamps
+  field :core
   field :type
-  field :items
-  belongs_to :user
+  field :meaning
   has_and_belongs_to_many :cloze_children
+  has_many :rankings
 end

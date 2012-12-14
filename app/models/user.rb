@@ -28,8 +28,8 @@ class User
   field :last_sign_in_ip,    :type => String
   field :level
   has_many :records
+  has_many :rankings
 
-  attr_accessible :level
   ## Confirmable
   # field :confirmation_token,   :type => String
   # field :confirmed_at,         :type => Time

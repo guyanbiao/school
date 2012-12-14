@@ -2,8 +2,7 @@ School::Application.routes.draw do
   devise_for :users
 
   root :to => 'home#index'
-
-  resources :imports
+  get "analytics" => "analytics#index"
   resources :users
   resources :tests
   resources :clozes

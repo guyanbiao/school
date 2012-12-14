@@ -1,3 +1,4 @@
+
 class TestsController < ApplicationController
   def index
     @clozes = Cloze.all
@@ -9,13 +10,13 @@ class TestsController < ApplicationController
       @record = current_user.records.new
 
       cloze.cloze_children.each do |questions|
-        if questions["answer"] != params[:result]["cloze_"+cloze.id+"_"+questions["position"].to_s]
-          @record.push(:cloze_child_ids, questions.id)
-          questions.push(:record_ids, @record.id)
-          @error_collection << {"child_id" => questions.id, "choice" => params[:result]["cloze_"+cloze.id+"_"+ questions["position"].to_s]}
+        if questions["anwser"] != params[:result]["cloze_"+cloze.id+"_"+qusetions.position]
+          @record.push("cloze_child_ids" => questions.id)
+          questions.push("record_ids" => @record.id)
+          @error_collection << {"child_id" => questions.id, "choice" => params[:result]["cloze_"+cloze.id+"_"+qusetions.position]}
           questions.points.each do |point|
             if Ranking.where("point_id" => point.id).exists?
-              @ranking = Ranking.where("point_id" => point.id).first
+              @ranking = Ranking.where("point_id" => point.id)
               @ranking.score = @ranking.score - 1
             else
               @ranking = Ranking.new
@@ -28,7 +29,7 @@ class TestsController < ApplicationController
         else
           questions.points.each do |point|
             if Ranking.where("point_id" => point.id).exists?
-              @ranking = Ranking.where("point_id" => point.id).first
+              @ranking = Ranking.where("point_id" => point.id)
               @ranking.score = @ranking.score + 1
             else
               @ranking = Ranking.new
