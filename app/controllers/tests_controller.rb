@@ -12,8 +12,10 @@ class TestsController < ApplicationController
         if questions["answer"] != params[:result]["cloze_"+cloze.id+"_"+questions["position"].to_s]
           @record.push(:cloze_child_ids, questions.id)
           questions.push(:record_ids, @record.id)
-          @error_collection << {"child_id" => questions.id, "choice" => params[:result]["cloze_"+cloze.id+"_"+ questions["position"].to_s]}
+          @before_collection = []
+
           questions.points.each do |point|
+            @before_collection << point.id
             if Ranking.where("point_id" => point.id).exists?
               @ranking = Ranking.where("point_id" => point.id).first
               @ranking.score = @ranking.score - 1
@@ -24,7 +26,18 @@ class TestsController < ApplicationController
               @ranking.score = @ranking.score - 1
             end
             @ranking.save
+
+            if PoiRec.all_of(:user_id => current_user.id, :point_id => point.id).exists?
+              PoiRec.all_of(:user_id => current_user.id, :point_id => point.id).first.push(:record_ids, @record.id)
+            else
+            @poi_rec = current_user.poi_recs.new
+            @poi_rec.point_id = point.id
+            @poi_rec.push(:record_ids, @record.id) 
+            @poi_rec.save
+            end
           end
+
+          @error_collection << {"child_id" => questions.id, "point_ids" => @before_collection, "choice" => params[:result]["cloze_"+cloze.id+"_"+ questions["position"].to_s]}
         else
           questions.points.each do |point|
             if Ranking.where("point_id" => point.id).exists?

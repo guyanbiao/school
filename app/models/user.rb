@@ -29,6 +29,7 @@ class User
   field :level
   has_many :records
   has_many :rankings
+  has_many :poi_recs
 
   ## Confirmable
   # field :confirmation_token,   :type => String

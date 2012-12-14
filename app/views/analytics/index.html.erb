@@ -1,4 +1,14 @@
-你已经做了次测试
-看起来关于的知识你不太懂
-看看你是怎么做错的？<%= link_to "Go: %>
+你已经做了<%= current_user.records.count %>次测试
+看起来你最不明白的几个知识点是
+<% @points.each do |point| %>
+  <% @car = point.point.type %>
+  <% case @car %>
+<% when "word" %>
+  <li> 单词<%= link_to point.point.core, reviews_path(:point_id => point.point.id ), :method => :post %>的意思</li>
+<% when "grammar" %>
+  <li>语法 <%= point.point.core  %></li>
+<% when "phrase" %>
+  <li>短语<%= point.point.core %>的用法</li>
+<% end %>
+<% end %>
 
