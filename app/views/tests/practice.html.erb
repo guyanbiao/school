@@ -1,0 +1,8 @@
+<% @cloze_children.each do |child| %>
+  <%= sanitize(child.cloze.text) %>
+  <% child.cloze.cloze_children.each do |inner|%>
+    <%= inner.choices %>
+  <% end %>
+<% end %>
+
+

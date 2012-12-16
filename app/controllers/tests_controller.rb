@@ -1,4 +1,8 @@
 class TestsController < ApplicationController
+  def practice
+    @point = Point.find(params[:id])
+    @cloze_children = @point.cloze_children
+  end
   def index
     @clozes = Cloze.all
   end
