@@ -1,8 +1,13 @@
 <%= render "shared/header" %>
 <% if user_signed_in? %>
-  <%= form_tag(edit_user_path(current_user), :method => :get ) do %>
-    <%= select_tag :level, options_for_select( 20.times.map {|r| [r+1,r+1]}) %>
-    <%= submit_tag %>
+  <%= form_tag(tests_path, :method => :get  ) do %>
+    <%= check_box_tag "model[]", "cloze", false, :id => "model_cloze" %>
+    <%= label_tag("model_cloze", "Cloze") %>
+    <%= check_box_tag "model[]", "reading", false, :id => "model_reading" %>
+    <%= label_tag("model_reading", "Reading") %>
+    <%= check_box_tag "model[]", "choice", false, :id => "model_choice" %>
+    <%= label_tag("model_choice", "Multiple choice question") %>
+    <%= submit_tag "Go" %>
   <% end %>
   <%= link_to 'Begin to test', tests_path %>
   <%= link_to 'Check history', "/analytics" %>

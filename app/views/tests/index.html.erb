@@ -1,9 +1,18 @@
+<%= debug(params) %>
+<%= params[:model] %>
 <%= form_for :result, :url => tests_path do |f| %>
+  <% if defined? @choices %>
+    <% @choices.each do |item| %>
+      <%= item.text %><br/>
+      <% end %>
+  <% end %>
+
+  <% if defined? @clozes %>
   <% @cloze_ids = [] %>
   <% @clozes.each do |cloze| %>
     <% @cloze_ids << cloze.id %>
-    <%= sanitize(cloze.text) %>
-    <% cloze.cloze_children.each do |questions| %>
+    <%= raw (cloze.text) %>
+    <% cloze.cloze_children.order_by([[:position, :asc]]).each do |questions| %>
       <span><%= (questions.position+1).to_s %>
       <ol type="A">
         <% questions['choices'].each do |choice| %>
@@ -17,4 +26,5 @@
   <% end %>
   <%= f.text_field :item, :value => @cloze_ids, :style => "display:none"  %>
   <%= f.submit %>
+<% end %>
 <% end %>

@@ -5,7 +5,11 @@
 <%= t("analytics.index."+ranking.point.type) %>
 <% if ranking.point.type == "distinguish phrase" %>
   <% ranking.point.core.each do |p| %>
+    <% if ranking.point.core.index(p) != ranking.point.core.length - 1 %>
+    <%= p %> 和
+  <% else %>
     <%= p %>
+    <% end %>
   <% end %>
 <% else %>
   <%= t("analytics.index."+ranking.point.core) %>

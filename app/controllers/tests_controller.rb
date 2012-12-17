@@ -4,9 +4,28 @@ class TestsController < ApplicationController
     @cloze_children = @point.cloze_children
   end
   def index
-    @clozes = Cloze.all
+    @relation = Proc.new do |str| 
+      case str
+      when "cloze"
+        @clozes = Cloze.all.limit(5)
+      when "choice"
+        @choices = Choice.all.limit(5)
+      when "reading"
+        @reading = Reading.all.limit(5)
+      end
+    end
+    params[:model] ||= []
+    if params[:model].length == 0 || params[:model].length == 3
+     # instance_variable_set("@"+"clozes", Cloze.all.limit(5))
+      @relation.call "cloze"
+    else 
+      params[:model].each do |picker|
+        @relation.call picker
+      end
+    end
   end
   def create
+    
     @clozes = Cloze.find(eval(params[:result][:item])) 
     @error_collection = []
     @clozes.each do |cloze|
