@@ -1,9 +1,6 @@
 class ReviewsController < ApplicationController
-  def create
+  def index 
     @point = Point.find(params[:point_id])
-    @poi_rec = current_user.poi_recs.where(:point_id => @point.id).first
-    @records = @poi_rec.records
-        
-    @poi_rec.records[0].items
+    @items = current_user.items.any_in("point_ids" => [@point.id]) 
   end
 end

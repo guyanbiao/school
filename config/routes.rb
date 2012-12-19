@@ -10,7 +10,7 @@ School::Application.routes.draw do
     end
   end
   resources :clozes
-  resources :reviews, :only => [:create]
+  resources :reviews, :only => [:index]
   resources :points, :only => [:show, :edit, :update]
   resources :choices, :only => [:index, :create]
   # This is a legacy wild controller route that's not recommended for RESTful applications.
