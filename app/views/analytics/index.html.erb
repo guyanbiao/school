@@ -1,20 +1,21 @@
+<% @show_resource = Proc.new do |point| 
+  "#{t('analytics.index.'+point.type.to_s)} #{point.core}"+
+case point.type 
+when "word","phrase"
+  " 的意思"
+when "distinguish phrase"
+  "kkkkkk"
+when "grammar", "sentence pattern", "conjunction"
+  " 的应用"
+else 
+  "lalaal"
+end
+ end %>
+
 你已经做了<%= current_user.records.count %>次测试
 看起来你最不明白的几个知识点是<br/>
 <% @ranking.each do |ranking| %>
-<% @get = show_resourse(ranking.point) %>
-<%= t("analytics.index."+ranking.point.type) %>
-<% if ranking.point.type == "distinguish phrase" %>
-  <% ranking.point.core.each do |p| %>
-    <% if ranking.point.core.index(p) != ranking.point.core.length - 1 %>
-    <%= p %> 和
-  <% else %>
-    <%= p %>
-    <% end %>
-  <% end %>
-<% else %>
-  <%= t("analytics.index."+ranking.point.core) %>
-<% end %>
-
-  <%= t(@get.pre) %> <%= eval(@get.show) %> <%= eval(@get.first) %>  <%= eval(@get.second) %> <%= eval(@get.third) %><br/> 
+  <%= ranking.point.id %>  <%= @show_resource.call ranking.point%> <%= link_to "Show hitory" %>
+  <%= link_to "Edit", edit_point_path(ranking.point.id) %> <%= link_to "Learn", point_path(ranking.point.id) %><br/>
 <% end %>
 

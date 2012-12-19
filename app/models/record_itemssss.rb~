@@ -1,0 +1,10 @@
+class RecordItem
+  include Mongoid::Document
+  field :type
+  field :item_id
+  field :answer
+  field :correct
+  field :point_ids
+  embedded_in :record
+  belongs_to :cloze_child
+end

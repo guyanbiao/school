@@ -1,7 +1,6 @@
 module AnalyticsHelper
-  
-  def show_resourse(point)
-    test = Fuck.new point.id, point.type 
-    return test
+  @show_resource = Proc.new do |point| 
+ "hahah" 
+ point.core 
+ end
   end
-end

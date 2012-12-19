@@ -1,11 +1,16 @@
-<% @clozes.each do |cloze| %>
-  <%= sanitize(cloze.text) %>
-  <% cloze.cloze_children.each do |questions| %>
-    <span class="question_number"><%= questions["position"].to_s+"." %></span>
-    <% questions['choices'].each do |choice| %>
-      <span class="question_list"><%= choice %></span><br/>
+<%= debug params %>
+<% if defined? @choices %>
+  <%= @choices.each do |choice| %>
+    <%= choice.text %><br/><%= choice.choices %> <%= choice.answer %> <%= params["choice_#{choice.id}"] %><br/>
     <% end %>
-    <span><b>The right answer:</b></span><span><%= questions['answer'] %></span><br/>
-    <span><b>Your answer:</b></span><span><%= params[:result]["cloze_"+cloze.id+"_"+questions["position"].to_s] %></span><br/>
-  <% end %>
 <% end %>
+<% if defined? @clozes %>
+  <% @clozes.each do |cloze| %>
+    <%= raw cloze.text %>
+    <% cloze.cloze_children.order_by([[:position, :asc]]).each do |child| %>
+      <%= child.choices %> <b>answer: </b> <%= child.answer %> <b>Your answer: </b><%= params["cloze_#{cloze.id}_#{child.id}"] %><br/>
+      <% end %>
+  <% end %>
+  
+<% end %>
+

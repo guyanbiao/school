@@ -30,7 +30,7 @@ class User
   has_many :records
   has_many :rankings
   has_many :poi_recs
-
+  has_many :items
   ## Confirmable
   # field :confirmation_token,   :type => String
   # field :confirmed_at,         :type => Time

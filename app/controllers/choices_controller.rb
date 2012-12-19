@@ -8,7 +8,8 @@ class ChoicesController < ApplicationController
       @choice = Choice.new
       @choice.text = item.xpath("text").text
       @choice.tips = item.xpath("tips").text
-      @choice.choices = item.xpath("choice").each {|x| x.text}
+      @choice_array = item.xpath("choice").map {|x| x.text}
+      @choice.choices = @choice_array
       @choice.answer = item.xpath("choice[@key = '1']").text
       @choice.save 
       @point = @choice.points.new
