@@ -15,7 +15,7 @@ end
 你已经做了<%= current_user.records.count %>次测试
 看起来你最不明白的几个知识点是<br/>
 <% @ranking.each do |ranking| %>
-  <%= ranking.point.id %>  <%= @show_resource.call ranking.point%> <%= link_to "Show hitory", reviews_path(point_id: ranking.point.id) %>
+  <%= @show_resource.call ranking.point%> <%= link_to "Show hitory", reviews_path(point_id: ranking.point.id) %>
   <%= link_to "Edit", edit_point_path(ranking.point.id) %> <%= link_to "Learn", point_path(ranking.point.id) %><br/>
 <% end %>
 
