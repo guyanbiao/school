@@ -6,10 +6,29 @@
 
 # Ignore bundler config
 /.bundle
-/tags
+tags
 # Ignore the default SQLite database.
 /db/*.sqlite3
-
-# Ignore all logfiles and tempfiles.
-/log/*.log
-/tmp
+.bundle
+tmp/
+db/*.sqlite3
+log/*.log
+log/*.log*
+tmp/**/*
+.sass-cache/
+config/database.yml
+config/mongoid.yml
+config/config.yml
+config/thin.yml
+config/redis.yml
+config/mailer_daemon.yml
+.redcar
+.DS_Store
+*.swp
+*.swo
+.rvmrc
+doc/wiki_repo
+solr/data/
+solr/pids/
+bin/
+chromedriver.log  
