@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
     auth = request.env['omniauth.auth']
     user = User.where(email: auth['info']['email']).first || User.create_from_omniauth(auth)
     session[:user_id] = user.id
-    redirect_to root_path, :notice => "Welcome #{auth['info']['name']}"
+    redirect_to root_path, :notice => "Welcome #{user.name} "
   end
   def failue
     redirect_to root_path, :alert => 'authentication falil'

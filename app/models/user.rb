@@ -10,7 +10,7 @@ class User
   has_many :items
   def self.create_from_omniauth(auth)
     create! do |user|
-      user.name = auth['info']['name']
+      user.name = auth['info']['nickname']
       user.email = auth['info']['email']
     end
   end

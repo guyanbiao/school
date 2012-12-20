@@ -7,6 +7,8 @@
 # Ignore bundler config
 /.bundle
 tags
+Gemfile
+.gitignore
 # Ignore the default SQLite database.
 /db/*.sqlite3
 .bundle
@@ -17,6 +19,7 @@ log/*.log*
 tmp/**/*
 .sass-cache/
 config/database.yml
+config/unicorn.rb
 config/mongoid.yml
 config/config.yml
 config/thin.yml
