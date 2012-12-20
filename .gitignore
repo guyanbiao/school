@@ -7,7 +7,7 @@
 # Ignore bundler config
 /.bundle
 tags
-Gemfile
+Gemfile.lock
 .gitignore
 unicorn/err.log
 # Ignore the default SQLite database.
