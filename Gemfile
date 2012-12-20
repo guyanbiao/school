@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 gem 'omniauth-identity'
+gem 'omniauth-github'
 gem 'rails', '3.2.9'
 gem 'mongoid'
 # Bundle edge Rails instead:
