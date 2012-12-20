@@ -1,7 +1,7 @@
 School::Application.routes.draw do
 
 
-  root :to => 'home#index'
+  root :to => 'sevgital#index'
   get "analytics" => "analytics#index"
   resources :users
   resources :tests do
