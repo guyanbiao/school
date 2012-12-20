@@ -1,0 +1,103 @@
+I, [2012-12-20T15:33:15.906836 #5281]  INFO -- : listening on addr=/tmp/unicorn.school.socket fd=8
+I, [2012-12-20T15:33:15.907158 #5281]  INFO -- : worker=0 spawning...
+I, [2012-12-20T15:33:15.907715 #5281]  INFO -- : worker=1 spawning...
+I, [2012-12-20T15:33:15.908269 #5281]  INFO -- : master process ready
+I, [2012-12-20T15:33:15.913939 #5284]  INFO -- : worker=0 spawned pid=5284
+I, [2012-12-20T15:33:15.914148 #5284]  INFO -- : Refreshing Gem list
+I, [2012-12-20T15:33:15.915510 #5286]  INFO -- : worker=1 spawned pid=5286
+I, [2012-12-20T15:33:15.915690 #5286]  INFO -- : Refreshing Gem list
+I, [2012-12-20T15:33:21.250642 #5284]  INFO -- : worker=0 ready
+I, [2012-12-20T15:33:21.327190 #5286]  INFO -- : worker=1 ready
+/home/db2inst1/.rvm/gems/ruby-1.9.3-p327/gems/unicorn-4.5.0/lib/unicorn/http_server.rb:193:in `pid=': Already running on PID:5281 (or pid=/home/db2inst1/rails/school/tmp/pids/unicorn.pid is stale) (ArgumentError)
+	from /home/db2inst1/.rvm/gems/ruby-1.9.3-p327/gems/unicorn-4.5.0/lib/unicorn/http_server.rb:137:in `start'
+	from /home/db2inst1/.rvm/gems/ruby-1.9.3-p327/gems/unicorn-4.5.0/bin/unicorn:121:in `<top (required)>'
+	from /home/db2inst1/.rvm/gems/ruby-1.9.3-p327/bin/unicorn:23:in `load'
+	from /home/db2inst1/.rvm/gems/ruby-1.9.3-p327/bin/unicorn:23:in `<main>'
+E, [2012-12-20T15:35:35.634194 #5281] ERROR -- : reaped #<Process::Status: pid 5284 SIGKILL (signal 9)> worker=0
+I, [2012-12-20T15:35:35.634345 #5281]  INFO -- : worker=0 spawning...
+I, [2012-12-20T15:35:35.635273 #5439]  INFO -- : worker=0 spawned pid=5439
+I, [2012-12-20T15:35:35.635469 #5439]  INFO -- : Refreshing Gem list
+I, [2012-12-20T15:35:39.865088 #5439]  INFO -- : worker=0 ready
+E, [2012-12-20T15:35:43.073408 #5281] ERROR -- : reaped #<Process::Status: pid 5286 SIGKILL (signal 9)> worker=1
+I, [2012-12-20T15:35:43.073569 #5281]  INFO -- : worker=1 spawning...
+I, [2012-12-20T15:35:43.074581 #5446]  INFO -- : worker=1 spawned pid=5446
+I, [2012-12-20T15:35:43.074785 #5446]  INFO -- : Refreshing Gem list
+I, [2012-12-20T15:35:47.253290 #5446]  INFO -- : worker=1 ready
+/home/db2inst1/.rvm/gems/ruby-1.9.3-p327/gems/unicorn-4.5.0/lib/unicorn/http_server.rb:193:in `pid=': Already running on PID:5281 (or pid=/home/db2inst1/rails/school/tmp/pids/unicorn.pid is stale) (ArgumentError)
+	from /home/db2inst1/.rvm/gems/ruby-1.9.3-p327/gems/unicorn-4.5.0/lib/unicorn/http_server.rb:137:in `start'
+	from /home/db2inst1/.rvm/gems/ruby-1.9.3-p327/gems/unicorn-4.5.0/bin/unicorn:121:in `<top (required)>'
+	from /home/db2inst1/.rvm/gems/ruby-1.9.3-p327/bin/unicorn:23:in `load'
+	from /home/db2inst1/.rvm/gems/ruby-1.9.3-p327/bin/unicorn:23:in `<main>'
+I, [2012-12-20T15:35:58.686213 #5281]  INFO -- : reaped #<Process::Status: pid 5439 exit 0> worker=0
+I, [2012-12-20T15:35:58.686566 #5281]  INFO -- : reaped #<Process::Status: pid 5446 exit 0> worker=1
+I, [2012-12-20T15:35:58.686939 #5281]  INFO -- : master complete
+I, [2012-12-20T15:36:03.877453 #5483]  INFO -- : unlinking existing socket=/tmp/unicorn.school.socket
+I, [2012-12-20T15:36:03.877820 #5483]  INFO -- : listening on addr=/tmp/unicorn.school.socket fd=8
+I, [2012-12-20T15:36:03.878360 #5483]  INFO -- : listening on addr=0.0.0.0:3000 fd=9
+I, [2012-12-20T15:36:03.878503 #5483]  INFO -- : worker=0 spawning...
+I, [2012-12-20T15:36:03.879075 #5483]  INFO -- : worker=1 spawning...
+I, [2012-12-20T15:36:03.879857 #5486]  INFO -- : worker=0 spawned pid=5486
+I, [2012-12-20T15:36:03.880030 #5486]  INFO -- : Refreshing Gem list
+I, [2012-12-20T15:36:03.881754 #5483]  INFO -- : master process ready
+I, [2012-12-20T15:36:03.885664 #5489]  INFO -- : worker=1 spawned pid=5489
+I, [2012-12-20T15:36:03.885885 #5489]  INFO -- : Refreshing Gem list
+I, [2012-12-20T15:36:08.827535 #5486]  INFO -- : worker=0 ready
+I, [2012-12-20T15:36:09.094158 #5489]  INFO -- : worker=1 ready
+127.0.0.1 - - [20/Dec/2012 15:36:10] "GET / HTTP/1.1" 200 - 1.2686
+127.0.0.1 - - [20/Dec/2012 15:36:10] "GET /analytics.css?body=1 HTTP/1.1" 304 - 0.0153
+127.0.0.1 - - [20/Dec/2012 15:36:10] "GET /choices.css?body=1 HTTP/1.1" 304 - 0.0191
+127.0.0.1 - - [20/Dec/2012 15:36:10] "GET /clozes.css?body=1 HTTP/1.1" 304 - 0.0072
+127.0.0.1 - - [20/Dec/2012 15:36:10] "GET /home.css?body=1 HTTP/1.1" 304 - 0.0158
+127.0.0.1 - - [20/Dec/2012 15:36:10] "GET /identities.css?body=1 HTTP/1.1" 304 - 0.0091
+127.0.0.1 - - [20/Dec/2012 15:36:10] "GET /imports.css?body=1 HTTP/1.1" 304 - 0.0126
+127.0.0.1 - - [20/Dec/2012 15:36:10] "GET /learns.css?body=1 HTTP/1.1" 304 - 0.0084
+127.0.0.1 - - [20/Dec/2012 15:36:10] "GET /points.css?body=1 HTTP/1.1" 304 - 0.0107
+127.0.0.1 - - [20/Dec/2012 15:36:10] "GET /reviews.css?body=1 HTTP/1.1" 304 - 0.0110
+127.0.0.1 - - [20/Dec/2012 15:36:10] "GET /sessions.css?body=1 HTTP/1.1" 304 - 0.0162
+127.0.0.1 - - [20/Dec/2012 15:36:10] "GET /tests.css?body=1 HTTP/1.1" 304 - 0.0105
+127.0.0.1 - - [20/Dec/2012 15:36:10] "GET /users.css?body=1 HTTP/1.1" 304 - 0.0512
+127.0.0.1 - - [20/Dec/2012 15:36:10] "GET /jquery.js?body=1 HTTP/1.1" 304 - 0.0100
+127.0.0.1 - - [20/Dec/2012 15:36:10] "GET /jquery_ujs.js?body=1 HTTP/1.1" 304 - 0.0125
+127.0.0.1 - - [20/Dec/2012 15:36:10] "GET /analytics.js?body=1 HTTP/1.1" 304 - 0.0104
+127.0.0.1 - - [20/Dec/2012 15:36:10] "GET /choices.js?body=1 HTTP/1.1" 304 - 0.0087
+127.0.0.1 - - [20/Dec/2012 15:36:10] "GET /clozes.js?body=1 HTTP/1.1" 304 - 0.0091
+127.0.0.1 - - [20/Dec/2012 15:36:10] "GET /home.js?body=1 HTTP/1.1" 304 - 0.0100
+127.0.0.1 - - [20/Dec/2012 15:36:10] "GET /identities.js?body=1 HTTP/1.1" 304 - 0.0171
+127.0.0.1 - - [20/Dec/2012 15:36:10] "GET /imports.js?body=1 HTTP/1.1" 304 - 0.0089
+127.0.0.1 - - [20/Dec/2012 15:36:10] "GET /learns.js?body=1 HTTP/1.1" 304 - 0.0073
+127.0.0.1 - - [20/Dec/2012 15:36:10] "GET /points.js?body=1 HTTP/1.1" 304 - 0.0079
+127.0.0.1 - - [20/Dec/2012 15:36:10] "GET /reviews.js?body=1 HTTP/1.1" 304 - 0.0070
+127.0.0.1 - - [20/Dec/2012 15:36:10] "GET /sessions.js?body=1 HTTP/1.1" 304 - 0.0076
+127.0.0.1 - - [20/Dec/2012 15:36:10] "GET /tests.js?body=1 HTTP/1.1" 304 - 0.0087
+127.0.0.1 - - [20/Dec/2012 15:36:10] "GET /users.js?body=1 HTTP/1.1" 304 - 0.0075
+127.0.0.1 - - [20/Dec/2012 15:36:10] "GET /application.js?body=1 HTTP/1.1" 304 - 0.0284
+127.0.0.1 - - [20/Dec/2012 15:36:11] "GET /application.css?body=1 HTTP/1.1" 304 - 0.9126
+127.0.0.1 - - [20/Dec/2012 15:36:12] "GET / HTTP/1.1" 304 - 0.2870
+127.0.0.1 - - [20/Dec/2012 15:36:12] "GET /analytics.css?body=1 HTTP/1.1" 304 - 0.0101
+127.0.0.1 - - [20/Dec/2012 15:36:12] "GET /choices.css?body=1 HTTP/1.1" 304 - 0.0101
+127.0.0.1 - - [20/Dec/2012 15:36:12] "GET /clozes.css?body=1 HTTP/1.1" 304 - 0.0093
+127.0.0.1 - - [20/Dec/2012 15:36:12] "GET /application.css?body=1 HTTP/1.1" 304 - 0.0335
+127.0.0.1 - - [20/Dec/2012 15:36:12] "GET /home.css?body=1 HTTP/1.1" 304 - 0.0089
+127.0.0.1 - - [20/Dec/2012 15:36:12] "GET /identities.css?body=1 HTTP/1.1" 304 - 0.0050
+127.0.0.1 - - [20/Dec/2012 15:36:12] "GET /learns.css?body=1 HTTP/1.1" 304 - 0.0048
+127.0.0.1 - - [20/Dec/2012 15:36:12] "GET /imports.css?body=1 HTTP/1.1" 304 - 0.0122
+127.0.0.1 - - [20/Dec/2012 15:36:12] "GET /points.css?body=1 HTTP/1.1" 304 - 0.0068
+127.0.0.1 - - [20/Dec/2012 15:36:12] "GET /sessions.css?body=1 HTTP/1.1" 304 - 0.0049
+127.0.0.1 - - [20/Dec/2012 15:36:12] "GET /tests.css?body=1 HTTP/1.1" 304 - 0.0058
+127.0.0.1 - - [20/Dec/2012 15:36:12] "GET /reviews.css?body=1 HTTP/1.1" 304 - 0.0126
+127.0.0.1 - - [20/Dec/2012 15:36:12] "GET /users.css?body=1 HTTP/1.1" 304 - 0.0052
+127.0.0.1 - - [20/Dec/2012 15:36:12] "GET /jquery_ujs.js?body=1 HTTP/1.1" 304 - 0.0051
+127.0.0.1 - - [20/Dec/2012 15:36:12] "GET /analytics.js?body=1 HTTP/1.1" 304 - 0.0048
+127.0.0.1 - - [20/Dec/2012 15:36:12] "GET /choices.js?body=1 HTTP/1.1" 304 - 0.0121
+127.0.0.1 - - [20/Dec/2012 15:36:12] "GET /clozes.js?body=1 HTTP/1.1" 304 - 0.0045
+127.0.0.1 - - [20/Dec/2012 15:36:12] "GET /home.js?body=1 HTTP/1.1" 304 - 0.0122
+127.0.0.1 - - [20/Dec/2012 15:36:12] "GET /jquery.js?body=1 HTTP/1.1" 304 - 0.0765
+127.0.0.1 - - [20/Dec/2012 15:36:12] "GET /imports.js?body=1 HTTP/1.1" 304 - 0.0194
+127.0.0.1 - - [20/Dec/2012 15:36:12] "GET /identities.js?body=1 HTTP/1.1" 304 - 0.0527
+127.0.0.1 - - [20/Dec/2012 15:36:12] "GET /points.js?body=1 HTTP/1.1" 304 - 0.0065
+127.0.0.1 - - [20/Dec/2012 15:36:12] "GET /learns.js?body=1 HTTP/1.1" 304 - 0.0091
+127.0.0.1 - - [20/Dec/2012 15:36:12] "GET /sessions.js?body=1 HTTP/1.1" 304 - 0.0090
+127.0.0.1 - - [20/Dec/2012 15:36:12] "GET /reviews.js?body=1 HTTP/1.1" 304 - 0.0077
+127.0.0.1 - - [20/Dec/2012 15:36:12] "GET /users.js?body=1 HTTP/1.1" 304 - 0.0080
+127.0.0.1 - - [20/Dec/2012 15:36:12] "GET /tests.js?body=1 HTTP/1.1" 304 - 0.0149
+127.0.0.1 - - [20/Dec/2012 15:36:12] "GET /application.js?body=1 HTTP/1.1" 304 - 0.0100
