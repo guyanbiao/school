@@ -7,5 +7,5 @@ OmniAuth.config.on_failure = Proc.new { |env|
   provider :identity, on_failed_registration: lambda { |env|
     IdentitiesController.action(:new).call(env)
   }
-  provider :github, '98c79eb67479b5cf4ff3', '1e82591ecd520522959711acffc58400620cb071'
+  provider :github, 'b17bf7e9a488badd6575', 'b306d28789953a251a8f0922fa628d628d98ca84'
 end
