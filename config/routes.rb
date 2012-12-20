@@ -3,6 +3,7 @@ School::Application.routes.draw do
 
   root :to => 'sevgital#index'
   get "analytics" => "analytics#index"
+  get 'home' => 'home#index'
   resources :users
   resources :tests do
     collection do
