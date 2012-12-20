@@ -1,3 +1,4 @@
+<%= debug session %>
 <%= render "shared/header" %>
 <% if user_signed_in? %>
   <%= form_tag(tests_path, :method => :get  ) do %>

@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-gem 'devise'
+gem 'omniauth-identity'
 gem 'rails', '3.2.9'
 gem 'mongoid'
 # Bundle edge Rails instead:
