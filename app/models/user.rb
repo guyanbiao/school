@@ -9,9 +9,9 @@ class User
   has_many :poi_recs
   has_many :items
   def self.create_from_omniauth(auth)
-    create! do |user|
-      user.name = auth['info']['nickname']
-      user.email = auth['info']['email']
-    end
+      create! do |user|
+        user.name = auth['info']['nickname'] || auth['info']['name']
+        user.email = auth['info']['email']
+      end
   end
 end
