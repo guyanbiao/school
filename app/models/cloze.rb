@@ -1,8 +1,9 @@
 class Cloze
   include Mongoid::Document
-  field :file
-  field :text, type: String
-  field :questions, type: Array
+  include Mongoid::Timestamps
+  field :html
   field :grade, type: Integer
-  has_many :cloze_children
+  field :passed, type: Boolean, :default => false 
+  has_many :cloze_children, :dependent => :destroy, :order => 'position ASC'
+  accepts_nested_attributes_for :cloze_children
 end

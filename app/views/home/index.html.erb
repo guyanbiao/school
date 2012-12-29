@@ -1,4 +1,5 @@
 <%= debug session %>
+<%= debug params %>
 <%= render "shared/header" %>
 <% if user_signed_in? %>
   <%= form_tag(tests_path, :method => :get  ) do %>
@@ -12,5 +13,6 @@
   <% end %>
   <%= link_to 'Begin to test', tests_path %>
   <%= link_to 'Check history', "/analytics" %>
+  <%= link_to 'Import cloze data', '/clozes' %>
 <% end %>
 

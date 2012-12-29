@@ -1,21 +1,28 @@
 #-- coding: utf-8 --
 class ClozesController < ApplicationController
-  def update
-  end
-  def edit
-    @clozes = Cloze.limit(1).order_by([[:created_at, :desc]])
-  end
   def index
-    
+    @cloze = Cloze.first
+    if @cloze
+    @results = Sunspot.more_like_this(@cloze) do
+      fields :text
+      minimum_term_frequency 1
+      minimum_document_frequency 2
+      maximum_query_terms 25
+      minimum_word_length 8
+      boost_by_relevance true
+    end
+    end
   end
   def create
     @cloze = Cloze.create
     @data = params[:clozes][:file]
     @doc = Nokogiri::XML(@data)
     @error_col = []
-#    @doc.at_xpath('item')['xmlns'] = 'http://www.sevgital.com'
+    @doc.at_xpath('item')['xmlns'] = 'http://www.sevgital.com'
     @xsd = Nokogiri::XML::Schema('<?xml version="1.0"?>
-                                 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+                                 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                                 targetNamespace="http://www.sevgital.com"
+                                 elementFormDefault="qualified">
                                  
 <xs:element name="item">
     <xs:complexType>
@@ -45,7 +52,7 @@ class ClozesController < ApplicationController
                         </xs:simpleContent>
                       </xs:complexType>
                     </xs:element>
-                    <xs:choice minOccurs="0" maxOccurs="unbounded">
+                    <xs:choice maxOccurs="unbounded">
                       <xs:element name="tip"/>
                       <xs:element name="type"/>
                       <xs:element name="core"/>
@@ -57,6 +64,13 @@ class ClozesController < ApplicationController
             </xs:sequence>
           </xs:complexType>
         </xs:element>
+       
+        
+
+
+
+
+
 
       </xs:all>
     </xs:complexType>
@@ -66,7 +80,7 @@ class ClozesController < ApplicationController
     @xsd.validate(@doc).each do |error|
       @error_col << error.to_s
     end
-    @cloze.html = @doc.xpath("item/text").to_xml
+    @cloze.text = @doc.xpath("item/text").text
     @cloze.grade = @doc.xpath("item/grade").text.to_i
     @doc.xpath("item/questions/choices").each do |choices|
       @cloze_child = @cloze.cloze_children.new
@@ -79,14 +93,25 @@ class ClozesController < ApplicationController
       @cloze_child.answer = choices.xpath("choice[@key = '1']").text
       @cloze_child.tips =   choices.xpath("choice/tips").text
       @cloze_child.save
+      
     end  
+    @question_data = []
+    @doc.xpath("item/questions/choices").each do |choices|
 
-    if @error_col == []
-    @cloze.save
-    render :text => 'ok'
-    else
-    render :json => @error_col
-    @cloze.destroy
+      @choice_data =[]
+      choices.xpath("choice").each do |item|
+        @choice_data << item.text
+      end
+      @question_data << {
+        :choices => @choice_data,
+        :key => choices.xpath("choice[@key= '1']").text,
+        :tips => choices.xpath("tips").text,
+        :point => choices.xpath("point").text
+      }
     end
+    @cloze.questions = @question_data
+    @cloze.save
+    render :json => @error_col
+    
   end
 end

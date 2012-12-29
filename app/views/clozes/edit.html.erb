@@ -1,0 +1,10 @@
+<%= div_for(@clozes) do |cloze|%>
+  <%= form_for cloze do |f| %>
+    <%= f.text_area :html %><div id="show"></div>
+    <%= f.fields_for :cloze_children, @cloze_children do |builder| %>
+      <%= render 'child_fields', :f => builder %><br/>
+      <% end %>
+    <%= f.submit %>
+    <% end %>
+<% end %>
+

@@ -7,7 +7,7 @@ class TestsController < ApplicationController
     @relation = Proc.new do |str| 
       case str
       when "cloze"
-        @clozes = Cloze.all.limit(5)
+        @clozes = Cloze.where(passed: true).limit(5)
         #        flash[:fls] = @clozes.to_a
       when "choice"
         @choices = Choice.all.limit(5)

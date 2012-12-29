@@ -10,10 +10,14 @@ School::Application.routes.draw do
       get :practice
     end
   end
-  resources :clozes
+  resources :clozes, :only => [:index, :create, :update]
+  get '/clozes/edit', :to => 'clozes#edit'
   resources :identities
   resources :reviews, :only => [:index]
-  resources :points, :only => [:show, :edit, :update]
+  resources :points do
+    get :build, :on => :collection
+  end
+  
   resources :choices, :only => [:index, :create]
   match '/auth/:provider/callback' => 'sessions#create'
   match 'auth/failure', to: 'sessions#failue'

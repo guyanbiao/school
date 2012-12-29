@@ -3,12 +3,16 @@ gem 'omniauth-identity'
 gem 'omniauth-github'
 gem 'rails', '3.2.9'
 gem 'mongoid'
+gem 'sunspot_rails'
+gem 'sunspot_solr', '~> 1.3.2'
+gem 'sunspot_mongoid', :git => 'git://github.com/TV4/sunspot_mongoid.git'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 
 gem 'nokogiri'
 
+gem 'tire'
 gem 'bson'
 gem 'bson_ext'
 gem 'unicorn'

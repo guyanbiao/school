@@ -1,4 +1,14 @@
-<%= form_for(@cloze, :html => {:multipart => true}) do |f| %>
+<%= form_for(:clozes, :html => {:multipart => true}) do |f| %>
   <%= f.file_field :file %>
   <%= f.submit %>
-  <% end %>
+<% end %>
+<%= form_tag clozes_path, method: :get do %>
+  <%= text_field_tag :query, params[:query] %>
+  <%= submit_tag "Search" %>
+<% end %>
+
+<%= @results.hits.count if @results%><br/>
+
+<%= @cloze.text if @cloze%>
+
+
