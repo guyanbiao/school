@@ -1,6 +1,8 @@
 #-- coding: utf-8 --
 class ClozesController < ApplicationController
   def update
+    @cloze = Cloze.find(params[:id]) 
+    @cloze.update_attributes(params[:cloze])
   end
   def edit
     @clozes = Cloze.limit(1).order_by([[:created_at, :desc]])
@@ -9,7 +11,7 @@ class ClozesController < ApplicationController
     
   end
   def create
-    @cloze = Cloze.create
+    @cloze = Cloze.new
     @data = params[:clozes][:file]
     @doc = Nokogiri::XML(@data)
     @error_col = []
@@ -83,7 +85,9 @@ class ClozesController < ApplicationController
 
     if @error_col == []
     @cloze.save
-    render :text => 'ok'
+    flash[:notice] = 'New cloze item created successfully'
+    redirect_to '/home'
+#    render :text => 'ok'
     else
     render :json => @error_col
     @cloze.destroy

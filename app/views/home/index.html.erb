@@ -5,8 +5,8 @@
   <%= form_tag(tests_path, :method => :get  ) do %>
     <%= check_box_tag "model[]", "cloze", false, :id => "model_cloze" %>
     <%= label_tag("model_cloze", "Cloze") %>
-    <%= check_box_tag "model[]", "reading", false, :id => "model_reading" %>
-    <%= label_tag("model_reading", "Reading") %>
+    <%# check_box_tag "model[]", "reading", false, :id => "model_reading" %>
+    <%# label_tag("model_reading", "Reading") %>
     <%= check_box_tag "model[]", "choice", false, :id => "model_choice" %>
     <%= label_tag("model_choice", "Multiple choice question") %>
     <%= submit_tag "Go" %>

@@ -10,7 +10,7 @@ class TestsController < ApplicationController
         @clozes = Cloze.where(passed: true).limit(5)
         #        flash[:fls] = @clozes.to_a
       when "choice"
-        @choices = Choice.all.limit(5)
+        @choices = Choice.where(passed: true).limit(5)
       when "reading"
         @reading = Reading.all.limit(5)
       end
@@ -44,7 +44,7 @@ class TestsController < ApplicationController
           #         questions.push(:record_ids, @record.id)
           @item.point_ids = questions.point_ids
           @item.save
-          if @item.correct = false
+          if @item.correct == false
 
             questions.points.each do |point|
               if Ranking.where("point_id" => point.id).exists?

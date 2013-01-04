@@ -6,7 +6,7 @@
 <% end %>
 <% if defined? @clozes %>
   <% @clozes.each do |cloze| %>
-    <%= raw cloze.text %>
+    <%= raw cloze.html %>
     <% cloze.cloze_children.order_by([[:position, :asc]]).each do |child| %>
       <%= child.choices %> <b>answer: </b> <%= child.answer %> <b>Your answer: </b><%= params["cloze_#{cloze.id}_#{child.id}"] %><br/>
       <% end %>

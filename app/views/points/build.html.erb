@@ -1,6 +1,14 @@
-<%= form_for @point  do |f|%>
-  <%= f.text_field :wiki %>
-  <%= f.submit %>
+<%= debug params %>
+<%= form_for @point, :url => points_path do |f|%>
+  <%= f.label "wiki" %>
+  <%= f.text_area :wiki %><br/>
+  <%= f.label "type" %>
+  <%= f.text_field :type, "data-autocomplete" => autocomplete_type_types_points_path %><br/>
+  <%= f.label "core" %>
+  <%= f.text_field :core, "data-autocomplete" => autocomplete_point_core_points_path%>
+      <%= text_field_tag "father_id", @father_id, :style => "display: none" %>
+      <%= text_field_tag "model_name", @model_name, :style => "display: none" %>
+  <br/><%= f.submit %>
 <% end %>
 
 

@@ -104,3 +104,58 @@
 (identity) Callback phase initiated.
 (github) Request phase initiated.
 (github) Callback phase initiated.
+(github) Request phase initiated.
+(github) Callback phase initiated.
+(github) Authentication failure! invalid_credentials: OmniAuth::Strategies::OAuth2::CallbackError, OmniAuth::Strategies::OAuth2::CallbackError
+(github) Request phase initiated.
+(github) Callback phase initiated.
+(github) Request phase initiated.
+(github) Callback phase initiated.
+(github) Authentication failure! invalid_credentials: OmniAuth::Strategies::OAuth2::CallbackError, OmniAuth::Strategies::OAuth2::CallbackError
+(github) Request phase initiated.
+(github) Callback phase initiated.
+(github) Request phase initiated.
+(github) Callback phase initiated.
+(github) Request phase initiated.
+(github) Callback phase initiated.
+(identity) Request phase initiated.
+(identity) Callback phase initiated.
+(identity) Authentication failure! invalid_credentials encountered.
+(github) Request phase initiated.
+(github) Callback phase initiated.
+(github) Request phase initiated.
+(github) Callback phase initiated.
+(identity) Request phase initiated.
+(identity) Request phase initiated.
+(identity) Callback phase initiated.
+(identity) Request phase initiated.
+(identity) Callback phase initiated.
+(github) Request phase initiated.
+(github) Callback phase initiated.
+(github) Authentication failure! invalid_credentials: OmniAuth::Strategies::OAuth2::CallbackError, OmniAuth::Strategies::OAuth2::CallbackError
+(github) Request phase initiated.
+(github) Callback phase initiated.
+(identity) Request phase initiated.
+(github) Request phase initiated.
+(github) Callback phase initiated.
+(identity) Request phase initiated.
+(github) Request phase initiated.
+(identity) Request phase initiated.
+(github) Request phase initiated.
+(github) Callback phase initiated.
+(github) Authentication failure! invalid_credentials: OmniAuth::Strategies::OAuth2::CallbackError, OmniAuth::Strategies::OAuth2::CallbackError
+(github) Request phase initiated.
+(github) Callback phase initiated.
+(github) Request phase initiated.
+(github) Callback phase initiated.
+(github) Authentication failure! invalid_credentials: OmniAuth::Strategies::OAuth2::CallbackError, OmniAuth::Strategies::OAuth2::CallbackError
+(github) Request phase initiated.
+(github) Callback phase initiated.
+(github) Request phase initiated.
+(github) Callback phase initiated.
+(github) Request phase initiated.
+(github) Callback phase initiated.
+(github) Request phase initiated.
+(github) Callback phase initiated.
+(github) Request phase initiated.
+(github) Callback phase initiated.

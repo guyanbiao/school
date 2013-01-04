@@ -1,5 +1,7 @@
-<%= f.text_field :choices %>
-<%= f.text_field :answer %><%= link_to 'New Point', build_points_path(:id => f.object.id) %>
+<% f.object.choices.each do |i| %>
+  <%= f.text_field :choices, :name => "#{f.object_name}[choices][]", :value => i %>
+  <% end %>
+  <%= f.text_field :answer %><%= link_to 'New Point', build_points_path(:id => f.object.id, :model_name => 'cloze') %>
 <%= f.fields_for :points do |builder| %>
   <%= render 'point_fields', :f => builder %>
 <% end %>

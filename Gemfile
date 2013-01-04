@@ -6,6 +6,7 @@ gem 'mongoid'
 gem 'sunspot_rails'
 gem 'sunspot_solr', '~> 1.3.2'
 gem 'sunspot_mongoid', :git => 'git://github.com/TV4/sunspot_mongoid.git'
+gem 'rails3-jquery-autocomplete'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 

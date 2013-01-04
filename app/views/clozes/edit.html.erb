@@ -4,6 +4,7 @@
     <%= f.fields_for :cloze_children, @cloze_children do |builder| %>
       <%= render 'child_fields', :f => builder %><br/>
       <% end %>
+      <%= f.check_box :passed %>
     <%= f.submit %>
     <% end %>
 <% end %>

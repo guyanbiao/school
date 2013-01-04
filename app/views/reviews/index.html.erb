@@ -1,7 +1,7 @@
 <%= debug params %>
 <% @items.each do |item| %>
   <% if item.type == "cloze" %>
-    <%= raw item.cloze_child.cloze.text %>
+    <%= raw item.cloze_child.cloze.html %>
     <%= item.cloze_child.choices %>
     <%= item.answer %>
   <% elsif item.type == "choice" %>

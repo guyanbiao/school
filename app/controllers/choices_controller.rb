@@ -1,4 +1,11 @@
 class ChoicesController < ApplicationController
+  def update
+    @choice = Choice.find(params[:id])
+    @choice.update_attributes(params[:choice])
+  end
+  def edit
+    @choices = Choice.where(passed: false).limit(1).order_by([[:created_at, :desc]])
+  end
   def index
     @choice = Choice.new
   end
@@ -12,8 +19,6 @@ class ChoicesController < ApplicationController
       @choice.choices = @choice_array
       @choice.answer = item.xpath("choice[@key = '1']").text
       @choice.save 
-      @point = @choice.points.new
-      @point.save
     end
   end
 end
