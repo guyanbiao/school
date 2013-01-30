@@ -2,13 +2,9 @@
   <%= f.file_field :file %>
   <%= f.submit %>
 <% end %>
-<%= form_tag clozes_path, method: :get do %>
-  <%= text_field_tag :query, params[:query] %>
-  <%= submit_tag "Search" %>
+
+
+<%= form_for(:clozes, url: create_list_clozes_path, :html => {:multipart => true}) do |f| %>
+  <%= f.file_field :file %>
+  <%= f.submit %>
 <% end %>
-
-<%= @results.hits.count if @results%><br/>
-
-<%= @cloze.text if @cloze%>
-
-

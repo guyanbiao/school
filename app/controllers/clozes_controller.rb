@@ -10,6 +10,15 @@ class ClozesController < ApplicationController
   def index
     
   end
+  
+  def create_list
+    @data = params[:clozes][:file]
+    @doc = Nokogiri::XML(@data)
+    render xml: @doc
+  end
+
+
+
   def create
     @cloze = Cloze.new
     @data = params[:clozes][:file]

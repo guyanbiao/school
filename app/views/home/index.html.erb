@@ -1,6 +1,5 @@
-<%= debug session %>
-<%= debug params %>
 <%= render "shared/header" %>
+
 <% if user_signed_in? %>
   <%= form_tag(tests_path, :method => :get  ) do %>
     <%= check_box_tag "model[]", "cloze", false, :id => "model_cloze" %>

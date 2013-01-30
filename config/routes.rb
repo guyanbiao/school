@@ -12,6 +12,7 @@ School::Application.routes.draw do
   end
   resources :clozes do
     get :edit, :on => :collection
+    post :create_list, :on => :collection
   end
   resources :identities
   resources :reviews, :only => [:index]
