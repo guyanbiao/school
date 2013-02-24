@@ -4,6 +4,7 @@ class User
   field :name
   validates_presence_of :email
   validates_presence_of :name
+  validates_uniqueness_of :email
   has_many :records
   has_many :rankings
   has_many :poi_recs

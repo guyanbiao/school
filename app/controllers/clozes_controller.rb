@@ -13,8 +13,12 @@ class ClozesController < ApplicationController
   
   def create_list
     @data = params[:clozes][:file]
-    @doc = Nokogiri::XML(@data)
-    render xml: @doc
+    #@doc = Nokogiri::XML(@data)
+    data_json = @data.read.split ' ' 
+    data_json.each_slice(2) do |a|
+      
+    end 
+    render text: data_json.count
   end
 
 
@@ -25,55 +29,6 @@ class ClozesController < ApplicationController
     @doc = Nokogiri::XML(@data)
     @error_col = []
 #    @doc.at_xpath('item')['xmlns'] = 'http://www.sevgital.com'
-    @xsd = Nokogiri::XML::Schema('<?xml version="1.0"?>
-                                 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
-                                 
-<xs:element name="item">
-    <xs:complexType>
-      <xs:all>
-        <xs:element name="grade"/>
-        
-        <xs:element name="text">
-          <xs:complexType>
-            <xs:sequence>
-              <xs:element name="p" maxOccurs="unbounded"/>
-            </xs:sequence>
-          </xs:complexType>
-        </xs:element>
-
-        <xs:element name="questions">
-          <xs:complexType>
-            <xs:sequence>
-              <xs:element name="choices" maxOccurs="unbounded">
-                <xs:complexType>
-                  <xs:sequence>
-                    <xs:element name="choice" maxOccurs="unbounded">
-                      <xs:complexType>
-                        <xs:simpleContent>
-                          <xs:extension base="xs:string">
-                            <xs:attribute name="key"/>
-                          </xs:extension>
-                        </xs:simpleContent>
-                      </xs:complexType>
-                    </xs:element>
-                    <xs:choice minOccurs="0" maxOccurs="unbounded">
-                      <xs:element name="tip"/>
-                      <xs:element name="type"/>
-                      <xs:element name="core"/>
-                    </xs:choice>
-                  </xs:sequence>
-                <xs:attribute name="sn"/>
-                </xs:complexType>
-              </xs:element>
-            </xs:sequence>
-          </xs:complexType>
-        </xs:element>
-
-      </xs:all>
-    </xs:complexType>
-</xs:element>
-
-</xs:schema>')
     @xsd.validate(@doc).each do |error|
       @error_col << error.to_s
     end
