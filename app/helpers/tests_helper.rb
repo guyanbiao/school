@@ -15,4 +15,10 @@ module TestsHelper
       return "??"
     end
   end
+
+
+  def parse_blank(html)
+    parsed_html = html.gsub(/<blank .*?\/>/, '______')
+  end
+
 end

@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+gem 'thin'
 gem 'omniauth-identity'
 gem 'omniauth-github'
 gem 'rails', '3.2.9'

@@ -1,10 +1,8 @@
-<%= debug(params) %>
-<%= debug(session[:user_id]) %>
-<%= form_tag :url => tests_path do %>
+<%= form_tag tests_path, :class => 'form-horizontal' do %>
   <% @item_count = 1 %>
   <% @present_count = 1 %>
   <% if defined? @choices %>
-    
+
     <div><%= convert_roman(@present_count) %>单项选择</div>
     <% @present_count += 1 %>
     <% @choices.each do |item| %>
@@ -14,32 +12,39 @@
       <% item.choices.each do |choice| %>
         <%= radio_button_tag "choice_#{item.id}", choice, false, :id => "choice_#{item.id}_#{item.choices.index(choice)}" %>
         <%= label_tag "choice_#{item.id}_#{item.choices.index(choice)}", choice %>
-        <% end %>
-        <br/>
       <% end %>
+      <br/>
+    <% end %>
   <% end %>
 
   <% if defined? @clozes %>
     <div><%= convert_roman(@present_count) %>完形填空</div>
-  <% @cloze_ids = [] %>
-  <% @clozes.each do |cloze| %>
-    <%= text_field_tag("cloze_ids[]",  cloze.id, :style => "display: none") %>
-    <% @cloze_ids << cloze.id %>
-    <%= raw (cloze.html) %>
-    
-    <% cloze.cloze_children.order_by([[:position, :asc]]).each do |questions| %>
-      <span><%= @item_count %>. </span>
-      <% @item_count += 1 %>
-      <ol type="A">
-        <% questions['choices'].each do |choice| %>
-          <li>
-          <%= radio_button_tag "cloze_#{cloze.id}_#{questions.id}", choice, false, :id => "cloze_#{cloze.id}_#{questions.id}_#{questions['choices'].index(choice)}" %>
-          <%= label_tag "cloze_#{cloze.id}_#{questions.id}_#{questions['choices'].index(choice)}", choice %>
-          </li>
-        <% end %>
-      </ol>
+    <% @cloze_ids = [] %>
+    <% @clozes.each do |cloze| %>
+      <%= text_field_tag("cloze_ids[]",  cloze.id, :style => "display: none") %>
+      <% @cloze_ids << cloze.id %>
+
+      <%= raw (parse_blank cloze.html) %>
+
+      <% cloze.cloze_children.order_by([[:position, :asc]]).each do |questions| %>
+        <div class="row">
+          <div class="span1"><%= @item_count %>. </div>
+          <% @item_count += 1 %>
+          <div class="span11">
+            <ol type="A">
+              <% questions['choices'].each do |choice| %>
+                <li>
+                  <label class="radio">
+                    <%= radio_button_tag "cloze_#{cloze.id}_#{questions.id}", choice, false, :id => "cloze_#{cloze.id}_#{questions.id}_#{questions['choices'].index(choice)}" %>
+                    <%= choice %>
+                  </label>
+                </li>
+              <% end %>
+            </ol>
+          </div>
+        </div>
+      <% end %>
     <% end %>
   <% end %>
-<% end %>
-  <%= submit_tag %>
+  <%= submit_tag '提交', :class => 'btn btn-success' %>
 <% end %>

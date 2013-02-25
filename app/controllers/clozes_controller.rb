@@ -16,9 +16,9 @@ class ClozesController < ApplicationController
     #@doc = Nokogiri::XML(@data)
     data_json = @data.read.split ' ' 
     data_json.each_slice(2) do |a|
-      
+      WordFre.create!(:word => a[1], :fre => a[0])
     end 
-    render text: data_json.count
+    render text: WordFre.all.count
   end
 
 
@@ -29,10 +29,17 @@ class ClozesController < ApplicationController
     @doc = Nokogiri::XML(@data)
     @error_col = []
 #    @doc.at_xpath('item')['xmlns'] = 'http://www.sevgital.com'
-    @xsd.validate(@doc).each do |error|
-      @error_col << error.to_s
-    end
+#    @xsd.validate(@doc).each do |error|
+#      @error_col << error.to_s
+#    end
     @cloze.html = @doc.xpath("item/text").to_xml
+
+    signature = @doc.xpath("item/text").text
+
+
+
+
+
     @cloze.grade = @doc.xpath("item/grade").text.to_i
     @doc.xpath("item/questions/choices").each do |choices|
       @cloze_child = @cloze.cloze_children.new
@@ -54,7 +61,6 @@ class ClozesController < ApplicationController
 #    render :text => 'ok'
     else
     render :json => @error_col
-    @cloze.destroy
     end
   end
 end
